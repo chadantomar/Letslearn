@@ -69,6 +69,15 @@ namespace Auth2
                     options.ClientSecret = "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";
                     options.CallbackPath = "/auth";
                     options.SaveTokens=true;
+                    options.Events = new Microsoft.AspNetCore.Authentication.OpenIdConnect.OpenIdConnectEvents()
+                    {
+                        OnTokenValidated = async context =>
+                        {
+
+                            var claimidentity = context.Principal.Identity as ClaimsIdentity;
+                            claimidentity.AddClaim(new Claim(ClaimTypes.Role, "Admin"));
+                        }
+                    };
                 });
                 //.AddGoogle(
                 //    options =>

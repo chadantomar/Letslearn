@@ -66,7 +66,7 @@ namespace Auth2.Controllers
             HttpContext.SignOutAsync();
             return Redirect(@"https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=https://localhost:5001");
         }
-        [Authorize]
+        [Authorize(Roles ="Admin")]
         public async Task<IActionResult> Secured()
         {
             var token = await HttpContext.GetTokenAsync("id_token");
