@@ -31,7 +31,7 @@ namespace Auth3
             {
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 //options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = "GoogleOpenID";
+                options.DefaultChallengeScheme = "okta";
             })
                 .AddCookie(options =>
                 {
@@ -68,7 +68,7 @@ namespace Auth3
                     options.ClientId = "34020387615-akamspkbipvi4pkfk770i75q7pd3sf73.apps.googleusercontent.com";
                     options.ClientSecret = "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";
                     options.CallbackPath = "/auth";
-                    options.SaveTokens=true;
+                    options.SaveTokens = true;
                     options.Events = new Microsoft.AspNetCore.Authentication.OpenIdConnect.OpenIdConnectEvents()
                     {
                         OnTokenValidated = async context =>
@@ -78,17 +78,29 @@ namespace Auth3
                             claimidentity.AddClaim(new Claim(ClaimTypes.Role, "Admin"));
                         }
                     };
-                });
-                //.AddGoogle(
-                //    options =>
-                //    {
-                //        options.ClientId = "34020387615-akamspkbipvi4pkfk770i75q7pd3sf73.apps.googleusercontent.com";
-                //        options.ClientSecret = "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";
-                //        options.CallbackPath = "/auth";
-                //        //options.AuthorizationEndpoint += "prompt=consent"; // this wil ask to prompt if
-                //                                                           // user try to login for differnt google login
-                //    }
-                //);
+                })
+                .AddOpenIdConnect("okta", options =>
+                 {
+                     options.Authority = "https://dev-40706885.okta.com";
+                     options.ClientId = "0oa411aazs2WuFMGB5d7";
+                     options.ClientSecret = "5LQx9ncGErK-ReMoVyuQ4asQzLLRk_mT0zIGtwM1";
+                     options.CallbackPath = "/okta-auth";
+                     
+                     options.ResponseType = "code";
+                     options.SaveTokens = true;
+                     options.Scope.Add("profile");
+                     options.Scope.Add("openid");
+                 });
+            //.AddGoogle(
+            //    options =>
+            //    {
+            //        options.ClientId = "34020387615-akamspkbipvi4pkfk770i75q7pd3sf73.apps.googleusercontent.com";
+            //        options.ClientSecret = "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";
+            //        options.CallbackPath = "/auth";
+            //        //options.AuthorizationEndpoint += "prompt=consent"; // this wil ask to prompt if
+            //                                                           // user try to login for differnt google login
+            //    }
+            //);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
