@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureQStorage_WeatherData", "AzureQStorage_WeatherData.csproj", "{0EC6CED3-63DF-495C-BDCC-17306449EDFC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0EC6CED3-63DF-495C-BDCC-17306449EDFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EC6CED3-63DF-495C-BDCC-17306449EDFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EC6CED3-63DF-495C-BDCC-17306449EDFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EC6CED3-63DF-495C-BDCC-17306449EDFC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3F67E504-2DBE-475E-B15A-9225874FE757}
+	EndGlobalSection
+EndGlobal
